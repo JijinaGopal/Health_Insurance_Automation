@@ -5,7 +5,7 @@ use Health_Insurance
 select * from [dbo].[health_insurance_dataset]
 
 ---Duplicate Check
-WITH CTE AS(
+;WITH CTE AS(
 SELECT *,ROW_NUMBER() OVER (PARTITION BY ClaimID ORDER BY ClaimDate) AS rn
 FROM [dbo].[health_insurance_dataset]
 )
