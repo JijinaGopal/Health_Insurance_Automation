@@ -1,7 +1,7 @@
 @echo off
 
 echo STEP 1 Import all files into SQL Server and clean ...
-sqlcmd -S LAPTOP-2K6MH8QUSQLEXPRESS -d Health_Insurance -E -i "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Data Cleaning.sql"  
+sqlcmd -S LAPTOP-2K6MH8QU\SQLEXPRESS -d Health_Insurance -E -i "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Data Cleaning.sql"  
 
 echo -----------------------------------
 
