@@ -8,6 +8,7 @@ echo -----------------------------------
 echo STEP 3 Git push changes to GitHub...
 cd "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation"
 git init
+git branch -M main
 git remote add origin https://github.com/JijinaGopal/Health_Insurance_Automation
 git add .
 git commit -m "Auto update after SQL cleaning - %DATE% %TIME%"
