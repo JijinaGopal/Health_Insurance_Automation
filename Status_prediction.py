@@ -410,7 +410,7 @@ f1 = f1_score(y_test,y_predict)
 accuracy,precision,recall,f1
 
 
-# In[66]:
+# In[ ]:
 
 
 metrics = {
@@ -421,11 +421,11 @@ metrics = {
 }
 
 
-# In[67]:
+# In[ ]:
 
 
 metrics_df = pd.DataFrame([metrics])
-metrics_df.to_csv('model_metrics.csv', index=False)
+metrics_df.to_csv('LogsticRegression_model_metrics.csv', index=False)
 
 
 # In[ ]:
@@ -523,19 +523,6 @@ metrics_df.to_csv('model_metrics.csv', index=False)
 
 
  
-
-
-# In[263]:
-
-
-print(encoders["ClaimStatus"].classes_)
-
-
-# In[265]:
-
-
-print(encoders["ClaimStatus"].transform(['Approved']))
-print(encoders["ClaimStatus"].transform(['Denied']))
 
 
 # In[ ]:

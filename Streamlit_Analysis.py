@@ -10,6 +10,10 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
+if st.button("🔄 Refresh Data"):
+    st.cache_data.clear()
+    st.rerun()
+
 
 @st.cache_data
 
