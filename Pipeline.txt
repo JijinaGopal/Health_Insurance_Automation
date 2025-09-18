@@ -1,7 +1,13 @@
 @echo off
 
 echo STEP 1 Import all files into SQL Server and clean ...
-sqlcmd -S LAPTOP-2K6MH8QUSQLEXPRESS -d Health_Insurance -E -i "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Data_Cleaning.sql"  
+sqlcmd -S LAPTOP-2K6MH8QUSQLEXPRESS -d Health_Insurance -E -i "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Data Cleaning.sql"  
+
+echo -----------------------------------
+
+echo STEP 2: Rewrite the file with cleaned data 
+"C:\Users\Administrator\AppData\Local\Programs\Python\Python39\python.exe" "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\cleaned_data_exporting.py"
+
 
 echo -----------------------------------
 
@@ -15,5 +21,14 @@ git push origin main
 
 echo -----------------------------------
 
-echo DONE. Streamlit Cloud will reflect the changes shortly.
+@echo off
+echo STEP 4: Convert notebook to script
+jupyter nbconvert --to script "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.ipynb"
+
+
+echo STEP 5: Run the ML model and export the metrics
+"C:\Users\Administrator\AppData\Local\Programs\Python\Python39\python.exe" "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.py"
+
+
+echo DONE.
 pause
