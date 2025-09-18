@@ -23,7 +23,7 @@ echo -----------------------------------
 
 @echo off
 echo STEP 4: Convert notebook to script
-jupyter nbconvert --to script "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.ipynb"
+"C:\Users\Administrator\AppData\Local\Programs\Python\Python39\Scripts" nbconvert --to script "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.ipynb"
 
 
 echo STEP 5: Run the ML model and export the metrics
