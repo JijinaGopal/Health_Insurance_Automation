@@ -25,6 +25,8 @@ echo -----------------------------------
 echo STEP 4: Convert notebook to script
 "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\Scripts\jupyter.exe" nbconvert --to script "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.ipynb"
 
+echo -----------------------------------
+
 
 echo STEP 5: Run the ML model and export the metrics
 "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\python.exe" "C:\Users\Administrator\Desktop\Internship\Insurance_Operations\Health Insurance Claims\Automation\Status_prediction.py"
