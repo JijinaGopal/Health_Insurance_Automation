@@ -10,10 +10,6 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-if st.button("🔄 Refresh Data"):
-    st.cache_data.clear()
-    st.rerun()
-
 
 @st.cache_data
 
@@ -408,6 +404,33 @@ In the health insurance sector, claims represent a major cost driver, requiring 
 
 
         st.markdown("---")
+        st.markdown("### 🗂️ Top 5 Diagnosis Codes by Claims")
+        claims_Diagnosiscode = (df.groupby('DiagnosisCode')['ClaimID'].count()
+        .reset_index(name="Claim Count").sort_values(by="Claim Count", ascending=False).head(5))
+
+        st.dataframe(claims_Diagnosiscode)
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(8, 6))
+        bars = ax.bar(claims_Diagnosiscode['DiagnosisCode'],claims_Diagnosiscode['Claim Count'],color='lightgreen')
+
+        # Annotate each bar
+        for i, value in enumerate(claims_Diagnosiscode['Claim Count']):
+            ax.text(i, value, f"{value:.2f}", ha='center', va='bottom', fontsize=9)
+
+        # Styling
+        ax.set_title('Top 5 Diagnosis Codes by Claims', fontsize=14)
+        ax.set_xlabel('Diagnosis Code', fontsize=12)
+        ax.set_ylabel('Claim Count', fontsize=12)
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+
+        
+        st.pyplot(fig)
+
+
+
+        st.markdown("---")
         st.markdown("### 🧾 Top 5 Diagnosis Codes by Average Claim Amount")
         Avg_claimamount_Diagnosiscode = (df.groupby('DiagnosisCode')['ClaimAmount'].mean()
         .reset_index(name="Avg Claim Amount").sort_values(by="Avg Claim Amount", ascending=False).head(5))
@@ -435,10 +458,40 @@ In the health insurance sector, claims represent a major cost driver, requiring 
 
 
 
+        st.markdown("---")
+        st.markdown("### 🧪 Top 5 Procedure Codes by Claims")
+
+        claims_procedurecode = (df.groupby('ProcedureCode')['ClaimID'].count().reset_index(name="Claim Count")
+        .sort_values(by="Claim Count", ascending=False).head(5))
+
+        st.dataframe(claims_procedurecode)
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(8, 6))
+        bars = ax.bar(claims_procedurecode['ProcedureCode'],claims_procedurecode['Claim Count'],color='lightblue')
+
+        # Annotate each bar
+        for i, value in enumerate(claims_procedurecode['Claim Count']):
+            ax.text(i, value, f"{value:.2f}", ha='center', va='bottom', fontsize=9)
+
+        # Styling
+        ax.set_title('Top 5 Procedure Codes by Claims', fontsize=14)
+        ax.set_xlabel('Procedure Code', fontsize=12)
+        ax.set_ylabel('Claim Count', fontsize=12)
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+
+        # Show plot in Streamlit
+        st.pyplot(fig)
+
+
+
+
+
 
 
         st.markdown("---")
-        st.markdown("### 🧪 Top 5 Procedure Codes by Average Claim Amount")
+        st.markdown("### 🎨 Top 5 Procedure Codes by Average Claim Amount")
 
         Avg_claimamount_procedurecode = (df.groupby('ProcedureCode')['ClaimAmount'].mean().reset_index(name="Avg Claim Amount")
         .sort_values(by="Avg Claim Amount", ascending=False).head(5))
@@ -462,6 +515,34 @@ In the health insurance sector, claims represent a major cost driver, requiring 
 
         # Show plot in Streamlit
         st.pyplot(fig)
+
+
+        st.markdown("---")
+        st.markdown("### 🧭 Top 5 Provider Locations by Claims")
+
+        claims_provider_location = (df.groupby('ProviderLocation')['ClaimID'].count().reset_index(name="Claim Count")
+        .sort_values(by="Claim Count", ascending=False).head(5))
+
+        st.dataframe(claims_provider_location)
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(8, 6))
+        bars = ax.bar(claims_provider_location['ProviderLocation'],claims_provider_location['Claim Count'],color='lightblue')
+
+        # Annotate each bar
+        for i, value in enumerate(claims_provider_location['Claim Count']):
+            ax.text(i, value, f"{value:.2f}", ha='center', va='bottom', fontsize=9)
+
+        # Styling
+        ax.set_title('Top 5 Provider Locations by Claims', fontsize=14)
+        ax.set_xlabel('Provider Location', fontsize=12)
+        ax.set_ylabel('Claim Count', fontsize=12)
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+
+        # Show plot in Streamlit
+        st.pyplot(fig)
+
 
 
 
@@ -496,6 +577,26 @@ In the health insurance sector, claims represent a major cost driver, requiring 
         st.pyplot(fig)
 
 
+        st.markdown("---")
+        st.markdown("### 📈 Monthly Claim Trend")
+        import calendar
+
+        # Month-wise Claim Trend
+        monthly_claims = df.groupby('month')['ClaimID'].count()
+        st.dataframe(monthly_claims)
+
+        # Create the plot
+        fig, ax = plt.subplots(figsize=(12, 8))
+        ax.plot(monthly_claims.index, monthly_claims.values, marker='o', color='purple')
+
+        ax.set_title('Monthly Claim Trend')
+        ax.set_xlabel('Month')
+        ax.set_ylabel('Number of Claims')
+        ax.set_xticks(range(1, 13))
+        ax.set_xticklabels([calendar.month_name[i] for i in range(1, 13)])
+
+        # Display in Streamlit
+        st.pyplot(fig)  
 
 
 

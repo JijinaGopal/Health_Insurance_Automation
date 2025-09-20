@@ -1,4 +1,7 @@
+Render:
 https://health-insurance-automation.onrender.com/
+Streamlit:
+https://healthinsuranceautomation-tdgz4rsfj5gvcjujnna5ww.streamlit.app/
 
 Username: user
 Password: user123
