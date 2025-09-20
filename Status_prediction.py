@@ -34,11 +34,11 @@ df.dtypes
 
 
 
-# In[50]:
+# In[ ]:
 
 
 #convert Claimdate to Date format
-df['ClaimDate']=pd.to_datetime(df['ClaimDate'],format='%m/%d/%Y')
+df['ClaimDate']=pd.to_datetime(df['ClaimDate'])
 
 
 # In[ ]:
