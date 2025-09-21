@@ -371,19 +371,17 @@ lR=LogisticRegression(C=0.01,max_iter=50,penalty='l2')
 lR.fit(X_train,y_train)
 
 
-# In[73]:
+# In[ ]:
 
 
 y_predict=lR.predict(X_test)
-y_predict=pd.DataFrame(y_predict, columns=['Predicted'])
 y_predict
 
 
-# In[74]:
+# In[ ]:
 
 
-y_predict['Predicted'] = y_predict['Predicted'].map({0: 'Approved', 1: 'Denied'})
-y_predict
+
 
 
 # In[63]:
