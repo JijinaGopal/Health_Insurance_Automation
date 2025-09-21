@@ -423,7 +423,7 @@ metrics = {
 
 
 metrics_df = pd.DataFrame([metrics])
-metrics_df.to_csv('LogsticRegression_model_metrics.csv', index=False)
+metrics_df.to_csv('LogisticRegression_model_metrics.csv', index=False)
 
 
 # In[ ]:
